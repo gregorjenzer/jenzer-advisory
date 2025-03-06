@@ -1,0 +1,124 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    --primary: 215 60% 20%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222 47% 11.2%;
+
+    --muted: 215 60% 97%;
+    --muted-foreground: 215 25% 40%;
+
+    --accent: 45 80% 50%;
+    --accent-foreground: 215 60% 20%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 215 60% 20%;
+
+    --radius: 0.3rem;
+  }
+
+  .dark {
+    --background: 215 60% 10%;
+    --foreground: 210 40% 98%;
+
+    --card: 215 60% 12%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 215 60% 12%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 215 60% 20%;
+
+    --secondary: 215 60% 15%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 215 60% 15%;
+    --muted-foreground: 215 20% 70%;
+
+    --accent: 45 80% 50%;
+    --accent-foreground: 215 60% 20%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 215 60% 20%;
+    --input: 215 60% 20%;
+    --ring: 210 40% 98%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-serif font-medium tracking-tight;
+  }
+}
+
+@layer components {
+  .animate-fade-in {
+    @apply opacity-0 translate-y-4 transition duration-700 ease-out;
+  }
+
+  .animate-fade-in.appear {
+    @apply opacity-100 translate-y-0;
+  }
+
+  .section-divider {
+    @apply w-24 h-1 bg-accent my-6;
+  }
+
+  .stat-card {
+    @apply p-6 border rounded-md bg-card transition-all duration-300 hover:shadow-md hover:border-accent;
+  }
+
+  .stat-number {
+    @apply text-4xl font-serif font-bold text-primary mb-2;
+  }
+
+  .stat-label {
+    @apply text-sm text-muted-foreground;
+  }
+}
+
+/* Animation observer */
+.reveal {
+  position: relative;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
