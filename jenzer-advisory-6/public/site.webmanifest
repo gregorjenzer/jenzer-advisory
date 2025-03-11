@@ -1,0 +1,21 @@
+{
+  "name": "Jenzer Advisory FZ-LLC",
+  "short_name": "Jenzer Advisory",
+  "icons": [
+    {
+      "src": "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Picture1-cpAomO0Usp3ARkQrhNQzGVFHg8YvLd.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Picture1-cpAomO0Usp3ARkQrhNQzGVFHg8YvLd.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#0f2947",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "start_url": "/"
+}
+

@@ -1,0 +1,454 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    --primary: 215 60% 20%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222 47% 11.2%;
+
+    --muted: 215 60% 97%;
+    --muted-foreground: 215 25% 40%;
+
+    --accent: 45 80% 50%;
+    --accent-foreground: 215 60% 20%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 215 60% 20%;
+
+    --radius: 0.3rem;
+  }
+
+  .dark {
+    --background: 215 60% 10%;
+    --foreground: 210 40% 98%;
+
+    --card: 215 60% 12%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 215 60% 12%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 215 60% 20%;
+
+    --secondary: 215 60% 15%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 215 60% 15%;
+    --muted-foreground: 215 20% 70%;
+
+    --accent: 45 80% 50%;
+    --accent-foreground: 215 60% 20%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 215 60% 20%;
+    --input: 215 60% 20%;
+    --ring: 210 40% 98%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+
+  /* Enhanced typography hierarchy with improved readability */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-serif font-medium tracking-tight text-balance;
+    color: hsl(var(--foreground));
+  }
+
+  h1 {
+    @apply text-3xl font-bold sm:text-4xl md:text-5xl;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+
+  h2 {
+    @apply text-2xl font-bold md:text-3xl;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+  }
+
+  h3 {
+    @apply text-xl font-bold;
+    line-height: 1.3;
+  }
+
+  /* Improved paragraph readability with increased line height and font size */
+  p {
+    @apply text-base md:text-lg leading-relaxed;
+    line-height: 1.7;
+  }
+
+  /* Improved link styles */
+  a {
+    @apply transition-colors duration-200;
+  }
+}
+
+@layer components {
+  .animate-fade-in {
+    @apply opacity-0 translate-y-4 transition duration-700 ease-out;
+  }
+
+  .animate-fade-in.appear {
+    @apply opacity-100 translate-y-0;
+  }
+
+  .section-divider {
+    @apply w-24 h-1 bg-accent my-6;
+  }
+
+  .stat-card {
+    @apply p-6 border rounded-md bg-card transition-all duration-300 hover:shadow-md hover:border-accent;
+  }
+
+  .stat-number {
+    @apply text-4xl font-serif font-bold text-primary mb-2;
+  }
+
+  .stat-label {
+    @apply text-sm font-medium text-muted-foreground;
+  }
+
+  /* Enhanced text contrast for dark mode */
+  .dark h1,
+  .dark h2,
+  .dark h3,
+  .dark h4,
+  .dark h5,
+  .dark h6 {
+    color: hsl(var(--primary));
+  }
+
+  .dark p {
+    color: hsl(var(--foreground) / 0.9);
+  }
+
+  /* Service card text improvements */
+  .service-card {
+    @apply p-6 border rounded-md bg-card transition-all duration-300 hover:shadow-lg relative overflow-hidden;
+    transform: translateY(0);
+  }
+
+  .service-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .service-card h3 {
+    @apply text-foreground;
+  }
+
+  .service-card p {
+    @apply text-foreground/90;
+  }
+
+  /* Enhanced service cards */
+  .service-card-enhanced {
+    @apply p-8 border rounded-lg bg-card transition-all duration-300 relative overflow-hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    transform: translateY(0);
+  }
+
+  .service-card-enhanced::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0) 0%, rgba(var(--accent) / 0.03) 100%);
+    z-index: 0;
+  }
+
+  .service-card-enhanced:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    border-color: hsl(var(--accent) / 0.3);
+  }
+
+  .service-card-enhanced:hover::before {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0) 0%, rgba(var(--accent) / 0.08) 100%);
+  }
+
+  /* Industry card text improvements */
+  .industry-card {
+    @apply flex flex-col items-center text-center space-y-4 p-8 border border-border/20 rounded-md bg-white shadow-md hover:shadow-xl transition-all duration-300 relative;
+    transform: translateY(0);
+  }
+
+  .industry-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .industry-card h3 {
+    @apply text-foreground font-bold;
+  }
+
+  .industry-card p {
+    @apply text-foreground/90;
+  }
+
+  /* Text balance utility */
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Improved text contrast on navy background */
+  .bg-navy h1,
+  .bg-navy h2,
+  .bg-navy h3,
+  .bg-navy h4,
+  .bg-navy h5,
+  .bg-navy h6 {
+    color: white;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  }
+
+  .bg-navy p {
+    color: rgba(255, 255, 255, 0.95);
+  }
+
+  /* Enhanced text contrast for muted text on navy background */
+  .bg-navy .text-muted-foreground {
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  /* Enhanced navigation styles */
+  header {
+    @apply h-20 transition-all duration-300 ease-in-out;
+  }
+
+  .nav-link-hover {
+    @apply relative;
+  }
+
+  .nav-link-hover::after {
+    @apply content-[''] absolute left-0 bottom-[-4px] h-[2px] w-0 bg-accent transition-all duration-300;
+  }
+
+  .nav-link-hover:hover::after {
+    @apply w-full;
+  }
+
+  /* Mobile menu animation */
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .mobile-menu {
+    animation: slideDown 0.3s ease forwards;
+  }
+
+  /* Enhanced hero section styles */
+  .hero-cta {
+    @apply relative overflow-hidden;
+  }
+
+  .hero-cta::after {
+    @apply content-[''] absolute -bottom-1 left-0 w-0 h-[3px] bg-navy transition-all duration-300 ease-in-out;
+  }
+
+  .hero-cta:hover::after {
+    @apply w-full;
+  }
+
+  .hero-image-container {
+    @apply relative overflow-hidden rounded-md shadow-lg;
+    transform: perspective(1000px) rotateY(0deg);
+    transition: transform 0.5s ease-in-out;
+  }
+
+  .hero-image-container:hover {
+    transform: perspective(1000px) rotateY(5deg);
+  }
+
+  /* Enhanced button styles with better contrast */
+  .btn-primary-cta {
+    @apply bg-accent text-navy font-bold shadow-md transition-all duration-300;
+    box-shadow: 0 4px 14px rgba(45, 80, 50, 0.1);
+  }
+
+  .btn-primary-cta:hover {
+    @apply bg-gold-light;
+    box-shadow: 0 6px 20px rgba(45, 80, 50, 0.15);
+    transform: translateY(-2px);
+  }
+
+  /* Enhanced outline button styles for better contrast on dark backgrounds */
+  .btn-outline-on-dark {
+    @apply border-2 border-white text-white font-semibold hover:bg-white/20;
+    text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.7);
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2);
+    letter-spacing: 0.01em;
+  }
+
+  /* Add a subtle glow effect to make white text more visible on dark backgrounds */
+  .text-on-dark {
+    text-shadow: 0px 0px 2px rgba(255, 255, 255, 0.7);
+    font-weight: 600;
+  }
+
+  /* Enhanced tabs */
+  .tabs-list {
+    @apply bg-background/50 backdrop-blur-sm;
+    border-bottom: 1px solid hsl(var(--border));
+  }
+
+  .tabs-trigger {
+    @apply relative transition-all duration-300 font-medium;
+  }
+
+  .tabs-trigger[data-state="active"] {
+    @apply text-accent font-semibold;
+  }
+
+  .tabs-trigger[data-state="active"]::after {
+    content: "";
+    @apply absolute bottom-0 left-0 w-full h-0.5 bg-accent;
+  }
+
+  /* Enhance the icon containers */
+  .icon-container {
+    @apply flex items-center justify-center rounded-full bg-accent/10 transition-all duration-300;
+  }
+
+  .service-card-enhanced:hover .icon-container {
+    @apply bg-accent/20;
+  }
+
+  /* Enhanced form input styles for better visibility */
+  .form-input-enhanced {
+    @apply flex h-12 w-full rounded-md border-2 border-input bg-background px-4 py-3 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  /* Enhanced form input styles for dark backgrounds */
+  .form-input-dark-enhanced {
+    @apply flex h-12 w-full rounded-md border-2 border-white/30 bg-white/10 px-4 py-3 text-base text-white ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-white/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  /* Enhanced blockquote styles for better readability */
+  .blockquote-enhanced {
+    @apply border-l-3 border-accent pl-4 italic text-white/90;
+  }
+
+  /* Article styling */
+  .prose {
+    @apply text-foreground;
+    max-width: 65ch;
+    margin: 0 auto;
+  }
+
+  .prose h1,
+  .prose h2,
+  .prose h3,
+  .prose h4,
+  .prose h5,
+  .prose h6 {
+    @apply font-serif font-bold text-foreground mt-8 mb-4;
+  }
+
+  .prose p {
+    @apply my-4 text-foreground/90;
+  }
+
+  .prose ul {
+    @apply my-6 list-disc pl-8;
+  }
+
+  .prose li {
+    @apply mb-2;
+  }
+
+  .prose a {
+    @apply text-accent hover:underline;
+  }
+
+  .prose blockquote {
+    @apply border-l-4 border-accent pl-4 italic my-6;
+  }
+
+  /* Enhanced accent button styles for better contrast */
+  .accent-button {
+    @apply bg-accent text-navy font-bold hover:bg-gold-dark;
+    text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.5);
+  }
+}
+
+/* Animation observer */
+.reveal {
+  position: relative;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Enhanced focus styles for accessibility */
+:focus-visible {
+  outline: 3px solid hsl(var(--accent));
+  outline-offset: 2px;
+}
+
+@layer utilities {
+  /* Text shadow utility for better visibility on various backgrounds */
+  .text-shadow-sm {
+    text-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+  }
+
+  .text-shadow-white {
+    text-shadow: 0 0 2px rgba(255, 255, 255, 0.7);
+  }
+
+  .font-enhanced {
+    font-weight: 600;
+    letter-spacing: 0.01em;
+  }
+
+  /* Enhanced focus styles for accessibility */
+  :focus-visible {
+    outline: 3px solid hsl(var(--accent));
+    outline-offset: 2px;
+  }
+}
+
