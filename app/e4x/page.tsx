@@ -556,6 +556,15 @@ export default function E4XPage() {
                     >
                       Connect on LinkedIn
                     </a>
+                    <a
+  href="https://www.jenzeradvisory.com/?utm_source=e4x&utm_medium=about-author-cta&utm_campaign=e4x_launch"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="inline-flex items-center justify-center rounded-xl border-2 border-[var(--e4x-navy)] bg-white px-6 py-3 text-sm font-semibold text-[var(--e4x-navy)] transition-all hover:bg-slate-50 focus:outline-none focus:ring-4 focus:ring-[var(--e4x-navy)]/50"
+>
+  Contact Jenzer Advisory
+</a>
+
                   </div>
                 </div>
               </div>
