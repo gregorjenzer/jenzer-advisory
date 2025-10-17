@@ -68,21 +68,29 @@ export default function Home() {
           </Link>
           <nav className="hidden md:flex gap-8">
             {[
-              { href: "#services", label: "Services" },
-              { href: "#about", label: "About Us" },
-              { href: "#industries", label: "Industries" },
-              { href: "#results", label: "Results" },
-              { href: "#insights", label: "Insights" },
-              { href: "#contact", label: "Contact" },
-            ].map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="text-sm font-medium relative hover:text-accent transition-colors duration-200 after:absolute after:left-0 after:bottom-[-4px] after:h-[2px] after:w-0 after:bg-accent after:transition-all after:duration-300 hover:after:w-full"
-              >
-                {item.label}
-              </Link>
-            ))}
+  { href: "#services", label: "Services" },
+  { href: "#about", label: "About Us" },
+  { href: "#industries", label: "Industries" },
+  { href: "#results", label: "Results" },
+  { href: "#insights", label: "Insights" },
+  // NEW item
+  { href: "/e4x?utm_source=main-nav&utm_medium=header&utm_campaign=e4x_launch", label: "E4X Book", _new: true },
+  { href: "#contact", label: "Contact" },
+].map((item) => (
+  <Link
+    key={item.href}
+    href={item.href}
+    className="text-sm font-medium relative hover:text-accent transition-colors duration-200 after:absolute after:left-0 after:bottom-[-4px] after:h-[2px] after:w-0 after:bg-accent after:transition-all after:duration-300 hover:after:w-full inline-flex items-center gap-1.5"
+  >
+    <span>{item.label}</span>
+    {item._new ? (
+      <span className="ml-1 rounded-full bg-accent/15 text-accent text-[10px] px-1.5 py-0.5 uppercase tracking-wide">
+        New
+      </span>
+    ) : null}
+  </Link>
+))}
+
           </nav>
           <Button asChild className="hidden md:inline-flex bg-accent text-accent-foreground hover:bg-gold-dark">
             <Link href="#contact">Get in Touch</Link>
@@ -136,22 +144,29 @@ export default function Home() {
         <div className="md:hidden absolute top-20 left-0 right-0 bg-background border-b z-50 shadow-md animate-fadeIn">
           <div className="container py-4 flex flex-col space-y-4">
             {[
-              { href: "#services", label: "Services" },
-              { href: "#about", label: "About Us" },
-              { href: "#industries", label: "Industries" },
-              { href: "#results", label: "Results" },
-              { href: "#insights", label: "Insights" },
-              { href: "#contact", label: "Contact" },
-            ].map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="text-base font-medium py-2 hover:text-accent transition-colors"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                {item.label}
-              </Link>
-            ))}
+  { href: "#services", label: "Services" },
+  { href: "#about", label: "About Us" },
+  { href: "#industries", label: "Industries" },
+  { href: "#results", label: "Results" },
+  { href: "#insights", label: "Insights" },
+  // NEW item
+  { href: "/e4x?utm_source=main-nav&utm_medium=header&utm_campaign=e4x_launch", label: "E4X Book", _new: true },
+  { href: "#contact", label: "Contact" },
+].map((item) => (
+  <Link
+    key={item.href}
+    href={item.href}
+    className="text-base font-medium py-2 hover:text-accent transition-colors inline-flex items-center gap-1.5"
+    onClick={() => setMobileMenuOpen(false)}
+  >
+    <span>{item.label}</span>
+    {item._new ? (
+      <span className="ml-1 rounded-full bg-accent/15 text-accent text-[10px] px-1.5 py-0.5 uppercase tracking-wide">
+        New
+      </span>
+    ) : null}
+  </Link>
+))}
             <Button asChild className="bg-accent text-accent-foreground hover:bg-gold-dark w-full mt-2">
               <Link href="#contact" onClick={() => setMobileMenuOpen(false)}>
                 Get in Touch
