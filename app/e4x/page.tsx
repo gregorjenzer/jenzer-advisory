@@ -40,9 +40,50 @@ export const metadata: Metadata = {
 
 export default function E4XPage() {
   // ✅ Wrap the entire page body in Suspense so hooks like useSearchParams (inside CtaLink) are safe.
+  // Inside export default function E4XPage() { … }
+const bookLd = {
+  "@context": "https://schema.org",
+  "@type": "Book",
+  name: "Engage for Excellence (E4X)",
+  author: { "@type": "Person", name: "Dr. Gregor Jenzer" },
+  publisher: { "@type": "Organization", name: "Jenzer Advisory" },
+  inLanguage: "en",
+  url: `${SITE}/e4x`,
+  image: OG,
+  workExample: [
+    {
+      "@type": "Book",
+      bookFormat: "https://schema.org/Paperback",
+      isbn: "9783952639214",
+      offers: { "@type": "Offer", url: "https://mybook.to/E4X", availability: "https://schema.org/InStock" }
+    },
+    // Optional: add if you have it
+    {
+      "@type": "Book",
+      bookFormat: "https://schema.org/Hardcover",
+      isbn: "9783952639207",
+      offers: { "@type": "Offer", url: "https://mybook.to/E4X", availability: "https://schema.org/InStock" }
+    },
+    // Optional: only if your eBook actually has an ISBN (Kindle often doesn't)
+    {
+      "@type": "Book",
+      bookFormat: "https://schema.org/EBook",
+      isbn: "9783952639221",
+      offers: { "@type": "Offer", url: "https://mybook.to/E4X", availability: "https://schema.org/InStock" }
+    }
+  ]
+};
+
+
   return (
     <Suspense fallback={null}>
       <main className="min-h-screen bg-white">
+<Script
+        id="e4x-book-jsonld"
+        type="application/ld+json"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(bookLd) }}
+      />
         <a
           href="#content"
           className="sr-only focus:not-sr-only fixed top-2 left-2 z-50 bg-white text-[color:var(--e4x-navy)] px-3 py-2 rounded-md shadow"
@@ -178,27 +219,16 @@ export default function E4XPage() {
                   Get the Pilot Kit
                 </CtaLink>
 
-                {SHOW_PREORDER ? (
-                  <a
-                    href={PREORDER_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Order Engage for Excellence on Amazon (opens in a new tab)"
-                    className="inline-flex items-center justify-center rounded-2xl border-2 border-[color:var(--e4x-navy)] bg-white px-8 py-4 text-base font-semibold text-[color:var(--e4x-navy)] transition-all hover:bg-slate-50 focus:outline-none focus:ring-4 focus:ring-[color:var(--e4x-navy)]/50"
-                  >
-                    Order on Amazon
-                  </a>
-                ) : (
-                  <a
-                    href={mto(
-                      "E4X | Launch updates",
-                      "Hi Gregor,\n\nPlease add me to E4X launch updates.\n\nName:\nOrganization:\nRole:\nLinkedIn (optional):\n",
-                    )}
-                    className="inline-flex items-center justify-center rounded-2xl border-2 border-[color:var(--e4x-navy)] bg-white px-8 py-4 text-base font-semibold text-[color:var(--e4x-navy)] transition-all hover:bg-slate-50 focus:outline-none focus:ring-4 focus:ring-[color:var(--e4x-navy)]/50"
-                  >
-                    Get launch updates
-                  </a>
-                )}
+          <a
+  href="https://mybook.to/E4X"
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Buy Engage for Excellence (E4X) on Amazon (opens in a new tab)"
+  className="inline-flex items-center justify-center rounded-2xl border-2 border-[color:var(--e4x-navy)] bg-white px-8 py-4 text-base font-semibold text-[color:var(--e4x-navy)] transition-all hover:bg-slate-50 focus:outline-none focus:ring-4 focus:ring-[color:var(--e4x-navy)]/50"
+>
+  Buy the book
+</a>
+
 
                 <a
                   href={mto(
@@ -315,14 +345,15 @@ export default function E4XPage() {
                   Download sample chapter
                 </a>
                 <a
-                  href={mto(
-                    "E4X | Launch updates",
-                    "Hi Gregor,\n\nPlease add me to E4X launch updates.\n\nName:\nOrganization:\nRole:\nLinkedIn (optional):\n",
-                  )}
-                  className="inline-flex items-center justify-center rounded-2xl border-2 border-[color:var(--e4x-navy)] px-6 py-3 font-semibold text-[color:var(--e4x-navy)] hover:bg-slate-50 transition-all focus:outline-none focus:ring-4 focus:ring-[color:var(--e4x-navy)]/50"
-                >
-                  Get launch updates
-                </a>
+  href="https://mybook.to/E4X"
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Buy Engage for Excellence (E4X) on Amazon (opens in a new tab)"
+  className="inline-flex items-center justify-center rounded-2xl border-2 border-[color:var(--e4x-navy)] bg-white px-8 py-4 text-base font-semibold text-[color:var(--e4x-navy)] transition-all hover:bg-slate-50 focus:outline-none focus:ring-4 focus:ring-[color:var(--e4x-navy)]/50"
+>
+  Buy the book
+</a>
+
               </div>
             </div>
           </div>
@@ -588,27 +619,16 @@ export default function E4XPage() {
                   Get the Pilot Kit
                 </CtaLink>
 
-                {SHOW_PREORDER ? (
-                  <a
-                    href={PREORDER_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Order Engage for Excellence on Amazon (opens in a new tab)"
-                    className="inline-flex items-center justify-center rounded-2xl border-2 border-white bg-transparent px-8 py-4 text-base font-semibold text-white transition-all hover:bg-white/10 focus:outline-none focus:ring-4 focus:ring-white/50"
-                  >
-                    Order on Amazon
-                  </a>
-                ) : (
-                  <a
-                    href={mto(
-                      "E4X | Launch updates",
-                      "Hi Gregor,\n\nPlease add me to E4X launch updates.\n\nName:\nOrganization:\nRole:\nLinkedIn (optional):\n",
-                    )}
-                    className="inline-flex items-center justify-center rounded-2xl border-2 border-white bg-transparent px-8 py-4 text-base font-semibold text-white transition-all hover:bg-white/10 focus:outline-none focus:ring-4 focus:ring-white/50"
-                  >
-                    Get launch updates
-                  </a>
-                )}
+<a
+  href="https://mybook.to/E4X"
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Buy Engage for Excellence (E4X) on Amazon (opens in a new tab)"
+  className="inline-flex items-center justify-center rounded-2xl border-2 border-[color:var(--e4x-navy)] bg-white px-8 py-4 text-base font-semibold text-[color:var(--e4x-navy)] transition-all hover:bg-slate-50 focus:outline-none focus:ring-4 focus:ring-[color:var(--e4x-navy)]/50"
+>
+  Buy the book
+</a>
+
               </div>
             </div>
           </div>
