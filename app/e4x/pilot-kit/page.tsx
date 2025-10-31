@@ -127,14 +127,15 @@ export default function PilotKitPage() {
               Request a 90-day pilot
             </a>
             <a
-              href={mto(
-                "E4X | Launch updates",
-                "Hi Gregor,\n\nPlease add me to E4X launch updates.\n\nName:\nOrganization:\nRole:\nLinkedIn (optional):\n",
-              )}
-              className="inline-flex items-center justify-center rounded-full border-2 border-[#0a1628] bg-white px-8 py-3 text-base font-semibold text-[#0a1628] hover:bg-[#0a1628] hover:text-white focus:outline-none focus:ring-2 focus:ring-[#0a1628] focus:ring-offset-2 transition-all"
-            >
-              Get book updates
-            </a>
+  href="https://mybook.to/E4X"
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Buy Engage for Excellence (E4X) on Amazon (opens in a new tab)"
+  className="inline-flex items-center justify-center rounded-2xl border-2 border-[color:var(--e4x-navy)] bg-white px-8 py-4 text-base font-semibold text-[color:var(--e4x-navy)] transition-all hover:bg-slate-50 focus:outline-none focus:ring-4 focus:ring-[color:var(--e4x-navy)]/50"
+>
+  Buy the book
+</a>
+
           </div>
         </div>
       </div>
