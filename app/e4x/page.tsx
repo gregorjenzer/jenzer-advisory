@@ -40,9 +40,50 @@ export const metadata: Metadata = {
 
 export default function E4XPage() {
   // ✅ Wrap the entire page body in Suspense so hooks like useSearchParams (inside CtaLink) are safe.
+  // Inside export default function E4XPage() { … }
+const bookLd = {
+  "@context": "https://schema.org",
+  "@type": "Book",
+  name: "Engage for Excellence (E4X)",
+  author: { "@type": "Person", name: "Dr. Gregor Jenzer" },
+  publisher: { "@type": "Organization", name: "Jenzer Advisory" },
+  inLanguage: "en",
+  url: `${SITE}/e4x`,
+  image: OG,
+  workExample: [
+    {
+      "@type": "Book",
+      bookFormat: "https://schema.org/Paperback",
+      isbn: "9783952639214",
+      offers: { "@type": "Offer", url: "https://mybook.to/E4X", availability: "https://schema.org/InStock" }
+    },
+    // Optional: add if you have it
+    {
+      "@type": "Book",
+      bookFormat: "https://schema.org/Hardcover",
+      isbn: "9783952639207",
+      offers: { "@type": "Offer", url: "https://mybook.to/E4X", availability: "https://schema.org/InStock" }
+    },
+    // Optional: only if your eBook actually has an ISBN (Kindle often doesn't)
+    {
+      "@type": "Book",
+      bookFormat: "https://schema.org/EBook",
+      isbn: "9783952639221",
+      offers: { "@type": "Offer", url: "https://mybook.to/E4X", availability: "https://schema.org/InStock" }
+    }
+  ]
+};
+
+
   return (
     <Suspense fallback={null}>
       <main className="min-h-screen bg-white">
+<Script
+        id="e4x-book-jsonld"
+        type="application/ld+json"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(bookLd) }}
+      />
         <a
           href="#content"
           className="sr-only focus:not-sr-only fixed top-2 left-2 z-50 bg-white text-[color:var(--e4x-navy)] px-3 py-2 rounded-md shadow"
